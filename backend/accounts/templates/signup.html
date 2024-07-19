@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<p>If you have an account already >> <a href="{% url 'accounts:login' %}"><button>Login</button></a> </p>
+
+<h1>Signup page</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="username">Username: </label>
+    <input type="text" name="username" placeholder="username">
+
+    <br><br>
+
+    <label for="email">Email: </label>
+    <input type="email" name="email" placeholder="email">
+
+    <br><br>
+
+    <label for="password">password:</label>
+    <input type="password" name="password">
+
+    <br><br>
+
+    <label for="confirm_password">Confirm Password: </label>
+    <input type="password" name="confirm_password">
+
+    <br><br>
+    <button type="submit">Signup</button>
+</form>
+
+
+
+
+{% endblock content %}
