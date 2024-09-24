@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Login page</h1>
+
+<form action="" method="post">
+
+    {% csrf_token %}
+
+    <label for="username">Username: </label>
+    <input type="text" name="username" placeholder="Username">
+
+    <br><br>
+
+    <label for="password">Password: </label>
+    <input type="password" name="password" placeholder="Password">
+
+    <br><br>
+
+    <button type="submit">Login</button>
+
+</form>
+
+<a href="{% url 'accounts:send_otp' %}"><button>Reset password</button></a>
+
+
+{% endblock content %}
