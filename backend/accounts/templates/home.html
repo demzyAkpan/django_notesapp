@@ -17,3 +17,22 @@
 {% endif %}
 
 {% endblock content %}
+{% extends 'base.html' %}
+
+{% block content %}
+<p><a href="{% url 'accounts:logout' %}"><button>Logout</button></a> </p>
+
+{% if user.is_authenticated %}
+    <p>Welcome {{user.username}}, your email {{user.email}}</p>
+    <!-- <p>Welcome {{username}}</p> -->
+
+    <h1>Write your notes here</h1>
+    <br><br>
+{% else %}
+<p>You're not logged in.</p>
+<a href="{% url 'accounts:login' %}">Log In</a> |
+<a href="{% url 'accounts:signup' %}">Sign Up</a>
+
+{% endif %}
+
+{% endblock content %}
