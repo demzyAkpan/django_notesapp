@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class Note(models.Model):
     title = models.CharField(max_length=100)
-    body = models.TextField()
+    body = models.TextField(max_length=15)
     archive = models.BooleanField(default=False)
     trash = models.BooleanField(default=False)
     pin = models.BooleanField(default=False)

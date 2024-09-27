@@ -56,7 +56,7 @@ class Login(View):
         if user is not None:
             login(request, user)
             messages.success(request, f"Welcome {username}, enter your notes")
-            return redirect('accounts:home')
+            return redirect('accounts:index')
         else:
             return redirect('accounts:login')
         
@@ -64,7 +64,7 @@ class Logout(View):
 
     def get(self, request):
         logout(request)
-        return redirect('accounts:home')
+        return redirect('accounts:index')
 
 class SendOtp(View):
     template_name = 'send_otp.html'
@@ -125,7 +125,9 @@ def search_function(request):
     if q != '':
         multiple_q = Q(Q(title__icontains=q) | Q(body__icontains=q))
         notes = Note.objects.filter(multiple_q)
+        messages.success(request, 'Here\'s what I found')
     else:
+        messages.error(request, 'Sorry, Note Not Found!')
         notes = Note.objects.filter(archive=False, trash=False)
     return render(request, 'search_results.html', {'notes': notes, 'query': q})
 
